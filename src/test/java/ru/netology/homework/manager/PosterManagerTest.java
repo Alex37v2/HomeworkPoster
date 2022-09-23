@@ -25,64 +25,66 @@ class PosterManagerTest {
     @Test
     void mustShowTenMovie() {
         PosterManager manager = new PosterManager(10);
-        manager.addMovie(first);
-        manager.addMovie(second);
-        manager.addMovie(third);
-        manager.addMovie(fourth);
-        manager.addMovie(fifth);
-        manager.addMovie(sixth);
-        manager.addMovie(seventh);
-        manager.addMovie(eighth);
-        manager.addMovie(ninth);
-        manager.addMovie(tenth);
-        Movie[] actual = manager.getLastAdd();
+        manager.findAll(first);
+        manager.findAll(second);
+        manager.findAll(third);
+        manager.findAll(fourth);
+        manager.findAll(fifth);
+        manager.findAll(sixth);
+        manager.findAll(seventh);
+        manager.findAll(eighth);
+        manager.findAll(ninth);
+        manager.findAll(tenth);
+        Movie[] actual = manager.getFindLast();
+
         assertArrayEquals(expected, actual);
     }
 
     @Test
     void mustShowNothing() {
         PosterManager manager = new PosterManager(0);
-        Movie[] actual = manager.getLastAdd();
+        Movie[] actual = manager.getFindLast();
         Movie[] expected = new Movie[0];
+
         assertArrayEquals(expected, actual);
     }
 
     @Test
     void mustShowValid() {
         PosterManager manager = new PosterManager(5);
-        manager.addMovie(first);
-        manager.addMovie(second);
-        manager.addMovie(third);
-        manager.addMovie(fourth);
-        manager.addMovie(fifth);
-        manager.addMovie(sixth);
-        manager.addMovie(seventh);
-        manager.addMovie(eighth);
-        manager.addMovie(ninth);
-        manager.addMovie(tenth);
+        manager.findAll(first);
+        manager.findAll(second);
+        manager.findAll(third);
+        manager.findAll(fourth);
+        manager.findAll(fifth);
+        manager.findAll(sixth);
+        manager.findAll(seventh);
+        manager.findAll(eighth);
+        manager.findAll(ninth);
+        manager.findAll(tenth);
         Movie movieToAdd = new Movie(11, "NumberFive", "http://", "horrors");
-        manager.addMovie(movieToAdd);
-        Movie[] actual = manager.getLastAdd();
+        manager.findAll(movieToAdd);
+        Movie[] actual = manager.getFindLast();
         Movie[] expected = {new Movie(11, "NumberFive", "http://", "horrors"), tenth, ninth, eighth, seventh};
-        assertArrayEquals(expected, actual);
 
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     void mustShowOverMax() {
         PosterManager manager = new PosterManager(11);
-        manager.addMovie(first);
-        manager.addMovie(second);
-        manager.addMovie(third);
-        manager.addMovie(fourth);
-        manager.addMovie(fifth);
-        manager.addMovie(sixth);
-        manager.addMovie(seventh);
-        manager.addMovie(eighth);
-        manager.addMovie(ninth);
-        manager.addMovie(tenth);
-        Movie[] actual = manager.getLastAdd();
-        assertArrayEquals(expected, actual);
+        manager.findAll(first);
+        manager.findAll(second);
+        manager.findAll(third);
+        manager.findAll(fourth);
+        manager.findAll(fifth);
+        manager.findAll(sixth);
+        manager.findAll(seventh);
+        manager.findAll(eighth);
+        manager.findAll(ninth);
+        manager.findAll(tenth);
+        Movie[] actual = manager.getFindLast();
 
+        assertArrayEquals(expected, actual);
     }
 }

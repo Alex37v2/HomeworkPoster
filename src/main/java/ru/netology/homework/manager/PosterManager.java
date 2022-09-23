@@ -10,17 +10,15 @@ public class PosterManager {
 
 
     PosterManager() {
-
     }
 
     public PosterManager(int customMovieLength) {
         if (customMovieLength > 0) {
             defaultMovieLength = customMovieLength;
         }
-
     }
 
-    public void addMovie(Movie movie) {
+    public void findAll(Movie movie) {
         int length = movies.length + 1;
         Movie[] tmp = new Movie[length];
         for (int i = 0; i < movies.length; i++) {
@@ -29,10 +27,9 @@ public class PosterManager {
         int lastMovie = tmp.length - 1;
         tmp[lastMovie] = movie;
         movies = tmp;
-
     }
 
-    public Movie[] getLastAdd() {
+    public Movie[] getFindLast() {
         int moviesLength = movies.length;
         if (moviesLength < defaultMovieLength) {
             defaultMovieLength = moviesLength;
@@ -41,7 +38,6 @@ public class PosterManager {
         for (int i = 0; i < customFilm.length; i++) {
             int result = moviesLength - i - 1;
             customFilm[i] = movies[result];
-
         }
         return customFilm;
     }
